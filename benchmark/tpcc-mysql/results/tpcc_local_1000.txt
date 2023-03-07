@@ -1,0 +1,70 @@
+***************************************
+*** ###easy### TPC-C Load Generator ***
+***************************************
+option u with value 'root'
+option h with value '127.0.0.1'
+option P with value '3308'
+option d with value 'test'
+option u with value 'root'
+option w with value '1000'
+option c with value '32'
+option r with value '10'
+option l with value '100'
+<Parameters>
+     [server]: 127.0.0.1
+     [port]: 3308
+     [DBname]: test
+       [user]: root
+       [pass]: 
+  [warehouse]: 1000
+ [connection]: 32
+     [rampup]: 10 (sec.)
+    [measure]: 100 (sec.)
+
+RAMP-UP TIME.(10 sec.)
+
+MEASURING START.
+
+  10, trx: 83, 95%: 1680.089, 99%: 1990.275, max_rt: 4855.818, 86|7208.338, 9|7615.275, 9|1253.644, 8|1632.879
+  20, trx: 82, 95%: 1259.711, 99%: 1465.284, max_rt: 1582.283, 76|6154.856, 8|6193.202, 8|1207.487, 9|940.727
+  30, trx: 77, 95%: 1563.155, 99%: 1933.895, max_rt: 1988.553, 84|6209.885, 7|5454.155, 8|1224.281, 8|943.557
+  40, trx: 85, 95%: 1451.315, 99%: 1568.780, max_rt: 1584.495, 78|5978.908, 10|5876.612, 8|1275.682, 9|1277.776
+  50, trx: 83, 95%: 1573.012, 99%: 1801.991, max_rt: 2344.714, 86|6876.812, 6|7080.566, 8|994.589, 8|911.864
+  60, trx: 88, 95%: 1209.458, 99%: 1666.066, max_rt: 3350.022, 93|6448.960, 12|6554.784, 9|955.144, 9|969.880
+  70, trx: 82, 95%: 1490.945, 99%: 1560.350, max_rt: 1948.837, 78|6590.987, 6|5075.694, 9|1227.621, 7|1621.032
+  80, trx: 87, 95%: 1572.541, 99%: 1898.335, max_rt: 2839.795, 91|7041.243, 9|5763.373, 7|1347.736, 9|926.597
+  90, trx: 85, 95%: 1548.716, 99%: 1884.182, max_rt: 1934.498, 83|6397.610, 10|6532.854, 10|1277.531, 8|1415.696
+ 100, trx: 84, 95%: 1277.559, 99%: 1599.602, max_rt: 1627.181, 76|7242.348, 7|6066.031, 8|828.444, 10|1055.047
+
+STOPPING THREADS................................
+
+<Raw Results>
+  [0] sc:0 lt:836  rt:0  fl:0 avg_rt: 1011.3 (5)
+  [1] sc:0 lt:831  rt:0  fl:0 avg_rt: 2752.4 (5)
+  [2] sc:0 lt:84  rt:0  fl:0 avg_rt: 2964.4 (5)
+  [3] sc:0 lt:84  rt:0  fl:0 avg_rt: 933.9 (80)
+  [4] sc:0 lt:85  rt:0  fl:0 avg_rt: 776.5 (20)
+ in 100 sec.
+
+<Raw Results2(sum ver.)>
+  [0] sc:0  lt:836  rt:0  fl:0 
+  [1] sc:0  lt:831  rt:0  fl:0 
+  [2] sc:0  lt:84  rt:0  fl:0 
+  [3] sc:0  lt:84  rt:0  fl:0 
+  [4] sc:0  lt:85  rt:0  fl:0 
+
+<Constraint Check> (all must be [OK])
+ [transaction percentage]
+        Payment: 43.28% (>=43.0%) [OK]
+   Order-Status: 4.38% (>= 4.0%) [OK]
+       Delivery: 4.38% (>= 4.0%) [OK]
+    Stock-Level: 4.43% (>= 4.0%) [OK]
+ [response time (at least 90% passed)]
+      New-Order: 0.00%  [NG] *
+        Payment: 0.00%  [NG] *
+   Order-Status: 0.00%  [NG] *
+       Delivery: 0.00%  [NG] *
+    Stock-Level: 0.00%  [NG] *
+
+<TpmC>
+                 501.600 TpmC

@@ -1,0 +1,12 @@
+import sys
+import mysql.connector
+import re
+def main(params):
+  params_lst=re.split(",",params)
+  connection = mysql.connector.connect(host="localhost",user="root", password="")
+  sql_select_Query = "select AVG({fldname}) from {tbname} ".format(tbname=params_lst[0], fldname=params_lst[1])
+  cursor = connection.cursor()
+  cursor = connection.cursor()
+  cursor.execute(sql_select_Query)
+  records = cursor.fetchall()
+  return records

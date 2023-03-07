@@ -1,0 +1,18 @@
+# trustdble/ci:adapters is the trustdble image from Docker Hub as our build environment.
+image: trustdble/ci:adapters
+
+pipelines:
+  default:
+    - step:
+          name: Build Blockchain Manager
+          script: 
+            - ./trustdble build 
+          artifacts: # defining the artifacts to be passed to each future step.             
+            - build-debug/**
+    - step:
+          name: Stub test
+          script: 
+           # stub_data used for the stub test, which saved temp files.
+            - mkdir stub_data
+            - ./trustdble test -a Stub
+            - rm -rf stub_data

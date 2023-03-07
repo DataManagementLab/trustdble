@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  server:
+    image: trustdble-server:${TDB_RELEASE?err}
+    ports:
+      - "3305:3305" # The first number is the port to reach the server. The other one is the used port inside the container should be stable.
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: password # initial password of the root user for mysql server
+      # This should be the gateway IP of the trustdble-network below
+      # Using the gateway IP allows us to connect to the server from a client on the host
+      MYSQL_ROOT_HOST: 172.20.1.1 # host ip of the trustdble network that points to your local machine
+      ETH_JOIN_IP: 172.20.1.1 # Ip to connect to your running ethereum containers. Enter here the ip of your machine that is accessable from outside e.g. ip of the local network or a vpn network
+      STUB_PATH: /stub
+    volumes:
+      - trustdble-data:/trustdble/data
+      - trustdble-stub:/stub
+      - /var/run/docker.sock:/var/run/docker.sock # bind the docker socket to the container (docker-in-docker)
+      # In this example we do not use a custom config, hence the next line is commented
+      # - ./configs/server:/trustdble/server_config # mount config of mysql-server to overwrite default config
+    networks:
+      - trustdble-network
+
+volumes:
+  trustdble-data: # stores no data only configs and invite files
+  trustdble-stub: # store data of tables using stub as type
+
+networks:
+  trustdble-network:
+     driver: bridge
+     ipam:
+        driver: default
+        config:
+          - subnet: 172.20.1.0/24
+

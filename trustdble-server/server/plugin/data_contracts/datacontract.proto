@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package DataContract;
+
+// The data contract execution service definition.
+service ExecDataContract {
+    // Function invoked to execute the data contract
+    rpc ExecuteDataContract (DataContractRequest) returns (DataContractReply) {}
+}
+
+// The request message containing the data contract id, and list of parameters which is needed to execute the Data contract
+message DataContractRequest {
+    string data_contract_name = 1;
+    string parameters = 2;
+}
+
+// The response message
+message DataContractReply {
+    string data_contract_name = 1;
+    string result = 2;
+    string data_contract_logic_hash = 3;
+    string MRENCLAVE = 4;
+    string MRSIGNER = 5;
+    string isv_prod_id = 6;
+    string isv_svn = 7;
+}

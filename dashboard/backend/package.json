@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "The backend of the trustdble software system acts as bridge between the admin dashboard and the mysql-database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "NODE_ENV=development nodemon server",
+    "test": "npm run test:app; npm run test:trustdble:stub; npm run test:trustdble:ethereum; npm run test:trustdble:fabric",
+    "test:app": "jest --verbose tests/app.test.js",
+    "test:trustdble:stub": "jest --verbose tests/trustdbleIntegration.test.js -- dbType=STUB shards=1 server0host=127.0.0.1 server1host=127.0.0.1 server0port=3305 server1port=3306",
+    "test:trustdble:ethereum": "jest --verbose tests/trustdbleIntegration.test.js -- dbType=ETHEREUM shards=1 server0host=127.0.0.1 server1host=127.0.0.1 server0port=3305 server1port=3306",
+    "test:trustdble:fabric": "jest --verbose tests/trustdbleIntegration.test.js -- dbType=FABRIC shards=1 server0host=127.0.0.1 server1host=127.0.0.1 server0port=3305 server1port=3306"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "injectGlobals": false,
+    "coverageReporters": ["html"]
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "lodash": "^4.17.21",
+    "@trustdble-utils/database-adapter": "0.0.1",
+    "properties-reader": "^2.2.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
+    "@jest/globals": "^27.5.1",
+    "jest": "^28.1.0",
+    "supertest": "^6.2.2",
+    "connect-history-api-fallback": "^2.0.0"
+  }
+}

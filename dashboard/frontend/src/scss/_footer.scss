@@ -1,0 +1,34 @@
+* {
+	margin: 0;
+}
+
+html, body, #app {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -50px; 
+}
+footer.footer, .push {
+  border-top: $light-border;
+  height: 50px;
+}
+
+footer.footer {
+  .logo {
+        a {
+          display: block;
+          height: $footer-logo-height;
+        }
+        img, svg {
+          width: auto;
+          height: $footer-logo-height;
+        }
+      }
+}
+
+@include mobile {
+  .footer-copyright {
+    text-align: center;
+  }
+}

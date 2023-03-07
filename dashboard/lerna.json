@@ -1,0 +1,6 @@
+{
+    "packages": ["trustdble-utils/*", "backend", "blockchain-monitor", "frontend"],
+    "npmClient": "npm",
+    "useWorkspaces": true,
+    "version": "0.0.1"
+  }

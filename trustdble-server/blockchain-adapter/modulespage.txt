@@ -1,0 +1,52 @@
+/**
+ *  @defgroup group1 Ethereum
+ *  # Ethereum Adapter {#ethereum_adapter}
+
+ *  The Ethereum Adapter essentially uses a hash table data structure within an Ethereum smart contract to store key-value data.
+ *  More information on the actual design of the smart contract can be found on this page \subpage ethereum_contract_design.
+
+ *  ## Design Considerations
+ *  Since there is no cpp Ethereum SDK for ethereum we use scripts written in Javascript to deploy a new instance of the smart contract to the blockchain.
+ *  Each smart contract corresponds to new (hash) _table_. This enables applications to, e.g., store records with different schemas in dedicated hash tables (contracts).
+ *  Note that the Ethereum account is currently hard coded in this script
+ *  Due to the lack of an cpp SDK we use libcurl and the plain Ethereum [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/) to interact with the blockchain
+ *  The adapter has currently been tested using the geth client (Ethereum Go client)
+ */
+ 
+/** @defgroup group2 Stub
+ * # Stub Adapter {#stub_adapter} 
+ * 
+ * The stub adapter is a simple simulation of a blockchain backend that stores data in text files.
+ * Its purpose is to provide all functionality of a BCAdapter without the need to deploy a real blockchain network.
+ * 
+ * ## Design Considerations
+ * * Each table is mapped to a dedicated `.txt` file on disk
+ * * The files are stored in the path set by the `Adapter.data-path` config value
+ * * To support distributed setups (ie. server instances running on different physical nodes) use a path on file share as `data-path`.
+ * * The stub adapter locks the file only on writes for the duration of a write.
+ * * Data is encoded as hex and then written to the file.
+ */
+
+/** @defgroup group3 Fabric
+ * # Fabric Adapter {#fabric_adapter} 
+ * 
+ * On the following pages you can find more information about:
+ * \subpage fabric_adapter_design and \subpage fabric_contract_design
+ */
+
+
+/** @defgroup group4 Factory
+ * Factory Method to create an adapter of a specific blockchain type
+ */
+
+
+/** @defgroup group5 Interface
+ * Interface definition to be used by storage engine to communicate with
+ * concrete blockchain technology adapter, like Ethereum, Fabric, ...
+ */
+
+
+/** @defgroup group6 Utils
+ * Helper-Methods
+ */
+

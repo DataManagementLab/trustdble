@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.155.1/containers/ubuntu
+{
+	"name": "Ubuntu",
+	"build": {
+		"context": "..", // allow us to access files in the working directory
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick an Ubuntu version: focal, bionic
+		"args": { "VARIANT": "focal" }
+	},
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-vscode.cpptools",
+		"ms-vscode.cmake-tools",
+		"ritwickdey.liveserver",
+		"cschlosser.doxdocgen",
+		"twxs.cmake",
+		"jeff-hykin.better-cpp-syntax",
+		"ms-vscode.cpptools-themes"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "gcc -v",
+
+	// Comment out these lines to run as non-root instead.
+	// "remoteUser": "vscode",
+	// "postCreateCommand": "sudo chown vscode build"
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
+	"workspaceFolder": "/workspace",
+	"mounts": [
+    	"source=build,target=${containerWorkspaceFolder}/build,type=volume",
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" 
+	],
+}

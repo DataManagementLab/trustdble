@@ -1,0 +1,17 @@
+# trustdble/ci:adapters is the trustdble image from Docker Hub as our build environment.
+
+image: trustdble/ci:adapters
+
+pipelines:
+  default:
+    - step:
+        name: Build TrustDBle Server
+        script: 
+          - ./trustdble build 
+        artifacts: # defining the artifacts to be passed to each future step.            
+          - build-debug/**
+    - step:
+        name: Stub test
+        script:  
+          - ./trustdble test -a Stub
+

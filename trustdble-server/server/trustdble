@@ -1,0 +1,97 @@
+#!/bin/bash
+# Helper script for TrustDBle Server Development
+# IMPORTS
+source trustdble_scripts/.constants.sh
+source trustdble_scripts/.methods.sh
+
+# STATICS
+SCRIPT_DIR="$(pwd)/trustdble_scripts"
+
+# PARSE ARGUMENTS
+POSITIONAL=()
+NON_POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -*|--*)
+    NON_POSITIONAL+=("$1")
+    ARG_REGEX="^(-*$|--*)"
+    if ! [[ $2 =~ $ARG_REGEX ]]; then
+        NON_POSITIONAL+=("$2")
+        shift # past value
+    fi
+    shift # past argument
+    ;;
+    *)    # positional arguments
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+set -- "${NON_POSITIONAL[@]}" # restore positional parameters
+
+# SELECT SCRIPT
+function join_underscore { local IFS="_"; echo "$*"; }
+function join_space { local IFS=" "; echo "$*"; }
+CMD=$(join_underscore ${POSITIONAL[@]})
+SCRIPT_ARGS=$(join_space ${NON_POSITIONAL[@]})
+
+# RESERVED COMMANDS
+
+function usage()
+{
+    cat << HEREDOC
+    This script wraps helper scripts within a simple command
+
+    Usage: ./trustdble [command] [arguments]
+
+    reserved commands:
+        help    show this help message
+        list    list all available script commands
+    
+    Every script command of 'trustdble' has an own help message, 
+    which can be accessed by using the '-h' or '--help' flag.
+
+HEREDOC
+}
+
+function list_commands()
+{
+    blacklist=("README.md")
+    echo -e "COMMANDS:"
+    for file in $SCRIPT_DIR/*
+    do
+        if [[ ! ${blacklist[*]} =~ "$(basename $file .sh)" ]] ; then
+            echo " $(basename $file .sh)" | tr '_' ' '
+        fi
+    done
+}
+
+if [ "$CMD" == "help" ]; then
+    usage
+    exit 0
+elif [ "$CMD" == "list" ]; then
+    list_commands
+    exit 0
+fi
+
+# CALL COMMAND SCRIPT
+SCRIPT_FOUND=false
+for file in $SCRIPT_DIR/*
+do
+    if [[ -f $file ]] && [ "$(basename $file .sh)" == "$CMD" ]; then
+        echo -e "RUNNING SCRIPT $(basename $file .sh)"
+        echo -e
+        SCRIPT_FOUND=true
+        /bin/bash $file $SCRIPT_ARGS
+    fi
+done
+
+if [ $SCRIPT_FOUND = false ] ; then
+    echo -e "SCRIPT '$CMD' WAS NOT FOUND."
+    echo -e
+    usage
+fi

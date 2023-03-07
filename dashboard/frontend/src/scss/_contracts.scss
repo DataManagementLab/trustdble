@@ -1,0 +1,89 @@
+.Header {
+    background-color: #F8F8F8;
+    color: black;
+    min-height: 100%;
+    position:absolute;
+    width: 100%;
+    padding: 10px;
+}
+
+.leftPadding {
+    left:-9px
+}
+
+.FlexBox {
+    padding:10px; 
+    display: flex; 
+    justify-content: space-between;
+    width: 80%;
+    padding-right: 15%;
+}
+
+.card-content {
+    padding: 1rem !important
+}
+
+.modified-content{
+    padding: 3px;
+}
+
+.modified-content ul {
+    list-style: inside;
+}
+
+.modified-content a {
+    text-decoration: underline;
+    color: darkblue;
+}
+
+.b-sidebar .sidebar-content.is-fixed {
+    top: 52px;
+    border-left: solid 1px black
+}
+
+.collapse-parent .card {
+    margin-bottom: 0px;
+}
+
+.WidthControl {
+    width: 80%;
+    padding-right: 14%;
+}
+
+.Query {
+    margin: 10px;
+    padding-bottom: 15px;
+}
+
+
+.Query input{
+    background-color: #1E273B;
+    color: white;
+    min-height: 150px;
+}
+
+.Query textarea {
+    border: solid black 0.4px !important;
+}
+
+
+.Result {
+    margin: 10px;
+    padding-bottom: 30px;
+}
+
+.Result .tabs a span {
+    color: black
+}
+
+.Result input {
+    background-color: #14304A;
+    color: white;
+    min-height: 150px;
+}
+
+.Result .tab-content textarea {
+    background-color: white !important;
+    color: black;
+    border: solid black 0.4px !important;
+}

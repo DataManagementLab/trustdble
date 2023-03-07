@@ -1,0 +1,80 @@
+***************************************
+*** ###easy### TPC-C Load Generator ***
+***************************************
+option u with value 'root'
+option h with value '127.0.0.1'
+option P with value '3307'
+option d with value 'test'
+option u with value 'root'
+option w with value '40'
+option c with value '1'
+option r with value '10'
+option l with value '200'
+<Parameters>
+     [server]: 127.0.0.1
+     [port]: 3307
+     [DBname]: test
+       [user]: root
+       [pass]: 
+  [warehouse]: 40
+ [connection]: 1
+     [rampup]: 10 (sec.)
+    [measure]: 200 (sec.)
+
+RAMP-UP TIME.(10 sec.)
+
+MEASURING START.
+
+  10, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  20, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  30, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  40, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  50, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  60, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  70, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  80, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+  90, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 100, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 110, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 120, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 130, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 140, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 150, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 160, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 170, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 180, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 190, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+ 200, trx: 0, 95%: 0.000, 99%: 0.000, max_rt: 0.000, 0|0.000, 0|0.000, 0|0.000, 0|0.000
+
+STOPPING THREADS.
+
+<Raw Results>
+  [0] sc:0 lt:0  rt:0  fl:0 avg_rt: inf (5)
+  [1] sc:0 lt:0  rt:0  fl:0 avg_rt: -nan (5)
+  [2] sc:0 lt:0  rt:0  fl:0 avg_rt: -nan (5)
+  [3] sc:0 lt:0  rt:0  fl:0 avg_rt: -nan (80)
+  [4] sc:0 lt:0  rt:0  fl:0 avg_rt: -nan (20)
+ in 200 sec.
+
+<Raw Results2(sum ver.)>
+  [0] sc:0  lt:0  rt:0  fl:0 
+  [1] sc:0  lt:0  rt:0  fl:0 
+  [2] sc:0  lt:0  rt:0  fl:0 
+  [3] sc:0  lt:0  rt:0  fl:0 
+  [4] sc:0  lt:0  rt:0  fl:0 
+
+<Constraint Check> (all must be [OK])
+ [transaction percentage]
+        Payment: -nan% (>=43.0%) [NG] *
+   Order-Status: -nan% (>= 4.0%) [NG] *
+       Delivery: -nan% (>= 4.0%) [NG] *
+    Stock-Level: -nan% (>= 4.0%) [NG] *
+ [response time (at least 90% passed)]
+      New-Order: -nan%  [NG] *
+        Payment: -nan%  [NG] *
+   Order-Status: -nan%  [NG] *
+       Delivery: -nan%  [NG] *
+    Stock-Level: -nan%  [NG] *
+
+<TpmC>
+                 0.000 TpmC

@@ -1,0 +1,14 @@
+{
+    "name": "blockchain-monitor",
+    "version": "0.0.1",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "dev": "nodemon index"
+    },
+    "dependencies": {
+        "@trustdble-utils/database-adapter": "0.0.1",
+        "crypto": "^1.0.1",
+        "web3": "^1.5.2"
+    }
+}

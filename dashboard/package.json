@@ -1,0 +1,34 @@
+{
+  "name": "trustdble-dashboard",
+  "private": true,
+  "workspaces": [
+    "trustdble-utils/*",
+    "backend",
+    "blockchain-monitor",
+    "frontend"
+  ],
+  "scripts": {
+    "start": "lerna run start --stream",
+    "build": "lerna run build --stream",
+    "dev": "lerna run dev --stream",
+    "backend": "lerna run dev --stream --scope=backend",
+    "blockchain-monitor": "lerna run dev --stream --scope=blockchain-monitor",
+    "frontend": "lerna run dev --stream --scope=frontend",
+    "lint": "lerna run lint --scope=frontend; eslint .",
+    "lint:fix": "lerna run lint:fix --scope=frontend; eslint . --fix",
+    "clean": "lerna clean -y",
+    "test": "lerna run test --since --stream",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
+  },
+  "dependencies": {
+    "lerna": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^7.0.4",
+    "nodemon": "^2.0.15"
+  }
+}
